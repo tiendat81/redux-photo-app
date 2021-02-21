@@ -14,7 +14,7 @@ PhotoForm.propTypes = {
 
 PhotoForm.defaultProps = {
   onSubmit: null,
-}
+};
 
 function PhotoForm(props) {
   const { initialValues, isAddMode } = props;
@@ -22,15 +22,13 @@ function PhotoForm(props) {
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('This field is required.'),
 
-    categoryId: Yup.number()
-      .required('This field is required.')
-      .nullable(),
+    categoryId: Yup.number().required('This field is required.').nullable(),
 
     photo: Yup.string().when('categoryId', {
       is: 1,
       then: Yup.string().required('This field is required.'),
       otherwise: Yup.string().notRequired(),
-    })
+    }),
   });
 
   // npm i --save react-select
@@ -40,7 +38,7 @@ function PhotoForm(props) {
       validationSchema={validationSchema}
       onSubmit={props.onSubmit}
     >
-      {formikProps => {
+      {(formikProps) => {
         // do something here ...
         const { values, errors, touched, isSubmitting } = formikProps;
         console.log({ values, errors, touched });
@@ -50,7 +48,6 @@ function PhotoForm(props) {
             <FastField
               name="title"
               component={InputField}
-
               label="Title"
               placeholder="Eg: Wow nature ..."
             />
@@ -58,17 +55,12 @@ function PhotoForm(props) {
             <FastField
               name="categoryId"
               component={SelectField}
-
               label="Category"
               placeholder="What's your photo category?"
               options={PHOTO_CATEGORY_OPTIONS}
             />
 
-            <FastField
-              name="photo"
-              component={RandomPhotoField}
-              label="Photo"
-            />
+            <FastField name="photo" component={RandomPhotoField} label="Photo" />
 
             <FormGroup>
               <Button type="submit" color={isAddMode ? 'primary' : 'success'}>

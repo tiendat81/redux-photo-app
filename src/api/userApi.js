@@ -16,10 +16,10 @@ const userApi = {
           name: currentUser.displayName,
           email: currentUser.email,
           photoUrl: currentUser.photoURL,
-        })
+        });
       }, 500);
-    })
-  }
-}
+    });
+  },
+};
 
 export default userApi;

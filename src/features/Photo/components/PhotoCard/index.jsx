@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Button } from 'reactstrap';
 import './PhotoCard.scss';
 
@@ -13,18 +13,18 @@ PhotoCard.defaultProps = {
   photo: {},
   onEditClick: null,
   onRemoveClick: null,
-}
+};
 
 function PhotoCard(props) {
   const { photo, onEditClick, onRemoveClick } = props;
 
   const handleEditClick = () => {
     if (onEditClick) onEditClick(photo);
-  }
+  };
 
   const handleRemoveClick = () => {
     if (onRemoveClick) onRemoveClick(photo);
-  }
+  };
 
   return (
     <div className="photo">

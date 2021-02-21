@@ -31,7 +31,6 @@ function App() {
         const params = {
           _page: 1,
           _limit: 10,
-
         };
         const response = await productApi.getAll(params);
         console.log(response);
@@ -39,49 +38,47 @@ function App() {
       } catch (error) {
         console.log('Failed to fetch product list: ', error);
       }
-    }
+    };
 
     fetchProductList();
   }, []);
 
-  // Handle firebase auth changed
-  useEffect(() => {
-    const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
-      if (!user) {
-        // user logs out, handle something here
-        console.log('User is not logged in');
-        return;
-      }
+  // // Handle firebase auth changed
+  // useEffect(() => {
+  //   const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
+  //     if (!user) {
+  //       // user logs out, handle something here
+  //       console.log('User is not logged in');
+  //       return;
+  //     }
 
-      // Get me when signed in
-      // const action = getMe();
-      try {
-        const actionResult = await dispatch(getMe());
-        const currentUser = unwrapResult(actionResult);
-        console.log('Logged in user: ', currentUser);
-      } catch (error) {
-        console.log('Failed to login ', error.message);
-        // show toast error
-      }
-    });
+  //     // Get me when signed in
+  //     // const action = getMe();
+  //     try {
+  //       const actionResult = await dispatch(getMe());
+  //       const currentUser = unwrapResult(actionResult);
+  //       console.log('Logged in user: ', currentUser);
+  //     } catch (error) {
+  //       console.log('Failed to login ', error.message);
+  //       // show toast error
+  //     }
+  //   });
 
-    return () => unregisterAuthObserver();
-  }, []);
+  //   return () => unregisterAuthObserver();
+  // }, []);
 
   const handleButtonClick = async () => {
     try {
       const params = {
         _page: 1,
         _limit: 10,
-
       };
       const response = await productApi.getAll(params);
       console.log(response);
     } catch (error) {
       console.log('Failed to fetch product list: ', error);
     }
-  }
-
+  };
 
   return (
     <div className="photo-app">

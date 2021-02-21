@@ -10,14 +10,11 @@ Banner.propTypes = {
 Banner.defaultProps = {
   title: '',
   backgroundUrl: '',
-}
+};
 
 function Banner(props) {
   const { title, backgroundUrl } = props;
-
-  const bannerStyle = backgroundUrl
-    ? { backgroundImage: `url(${backgroundUrl})` }
-    : {}
+  const bannerStyle = backgroundUrl ? { backgroundImage: `url(${backgroundUrl})` } : {};
 
   return (
     <section className="banner" style={bannerStyle}>

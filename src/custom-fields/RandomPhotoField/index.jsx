@@ -13,7 +13,7 @@ RandomPhotoField.propTypes = {
 
 RandomPhotoField.defaultProps = {
   label: '',
-}
+};
 
 function RandomPhotoField(props) {
   const { field, form, label } = props;
@@ -22,8 +22,8 @@ function RandomPhotoField(props) {
   const showError = errors[name] && touched[name];
 
   const handleImageUrlChange = (newImageUrl) => {
-    form.setFieldValue(name, newImageUrl)
-  }
+    form.setFieldValue(name, newImageUrl);
+  };
 
   return (
     <FormGroup>
@@ -36,6 +36,7 @@ function RandomPhotoField(props) {
         onRandomButtonBlur={onBlur}
       />
 
+      {/* to show error message, before ErrorMessage need a class is-invalid so that below a way to cheat, not recommended do that way */}
       <div className={showError ? 'is-invalid' : ''}></div>
       <ErrorMessage name={name} component={FormFeedback} />
     </FormGroup>

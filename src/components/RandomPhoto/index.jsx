@@ -15,12 +15,12 @@ RandomPhoto.defaultProps = {
   imageUrl: '',
   onImageUrlChange: null,
   onRandomButtonBlur: null,
-}
+};
 
 const getRandomImageUrl = () => {
   const randomId = Math.trunc(Math.random() * 2000);
   return `https://picsum.photos/id/${randomId}/300/300`;
-}
+};
 
 function RandomPhoto(props) {
   const { name, imageUrl, onImageUrlChange, onRandomButtonBlur } = props;
@@ -28,9 +28,9 @@ function RandomPhoto(props) {
   const handleRandomPhotoClick = async () => {
     if (onImageUrlChange) {
       const randomImageUrl = getRandomImageUrl();
-      onImageUrlChange(randomImageUrl)
+      onImageUrlChange(randomImageUrl);
     }
-  }
+  };
 
   return (
     <div className="random-photo">
@@ -51,6 +51,7 @@ function RandomPhoto(props) {
           <img
             src={imageUrl}
             alt="Ooops ... not found. Please click random again!"
+            // if error when fetch new image, auto call function to get a new image
             onError={handleRandomPhotoClick}
           />
         )}

@@ -11,7 +11,7 @@ MainPage.propTypes = {};
 
 function MainPage(props) {
   const dispatch = useDispatch();
-  const photos = useSelector(state => state.photos);
+  const photos = useSelector((state) => state.photos);
   const history = useHistory();
   // console.log('List of photos: ', photos);
 
@@ -19,14 +19,14 @@ function MainPage(props) {
     console.log('Edit: ', photo);
     const editPhotoUrl = `/photos/${photo.id}`;
     history.push(editPhotoUrl);
-  }
+  };
 
   const handlePhotoRemoveClick = (photo) => {
     console.log('Remove: ', photo);
     const removePhotoId = photo.id;
     const action = removePhoto(removePhotoId);
     dispatch(action);
-  }
+  };
 
   return (
     <div className="photo-main">

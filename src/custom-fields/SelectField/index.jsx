@@ -19,7 +19,7 @@ SelectField.defaultProps = {
   placeholder: '',
   disabled: false,
   options: [],
-}
+};
 
 function SelectField(props) {
   const { field, form, options, label, placeholder, disabled } = props;
@@ -27,7 +27,7 @@ function SelectField(props) {
   const { errors, touched } = form;
   const showError = errors[name] && touched[name];
 
-  const selectedOption = options.find(option => option.value === value);
+  const selectedOption = options.find((option) => option.value === value);
 
   const handleSelectedOptionChange = (selectedOption) => {
     const selectedValue = selectedOption ? selectedOption.value : selectedOption;
@@ -35,11 +35,11 @@ function SelectField(props) {
     const changeEvent = {
       target: {
         name: name,
-        value: selectedValue
-      }
+        value: selectedValue,
+      },
     };
     field.onChange(changeEvent);
-  }
+  };
 
   return (
     <FormGroup>
@@ -50,11 +50,9 @@ function SelectField(props) {
         {...field}
         value={selectedOption}
         onChange={handleSelectedOptionChange}
-
         placeholder={placeholder}
         isDisabled={disabled}
         options={options}
-
         className={showError ? 'is-invalid' : ''}
       />
 

@@ -2,16 +2,12 @@ import React from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
-SignIn.propTypes = {
-
-};
+SignIn.propTypes = {};
 
 const uiConfig = {
   signInFlow: 'redirect',
   signInSuccessUrl: '/photos',
-  signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID
-  ],
+  signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
 };
 
 function SignIn() {
@@ -23,10 +19,10 @@ function SignIn() {
         <p>or login with social accounts</p>
       </div>
 
-      <StyledFirebaseAuth
+      {/* <StyledFirebaseAuth
         uiConfig={uiConfig}
         firebaseAuth={firebase.auth()}
-      />
+      /> */}
     </div>
   );
 }
